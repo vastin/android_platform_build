@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2007 The Android Open Source Project
+# Copyright (C) 2011 The Android-x86 Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,11 +15,22 @@
 #
 
 # This is a generic product that isn't specialized for a specific device.
-# It includes the base Android platform.
+# It includes the base Android-x86 platform.
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
+
+GENERIC_X86_DIR := device/common/generic_x86
+
+# Generic x86 packages
+$(call inherit-product, $(GENERIC_X86_DIR)/packages.mk)
+
+# Generic x86 device configurations
+$(call inherit-product, $(GENERIC_X86_DIR)/device.mk)
 
 # Overrides
 PRODUCT_BRAND := generic_x86
 PRODUCT_DEVICE := generic_x86
 PRODUCT_NAME := generic_x86
+
+GENERIC_X86_CONFIG_MK := $(GENERIC_X86_DIR)/BoardConfig.mk
+GENERIC_X86_ANDROID_MK := $(GENERIC_X86_DIR)/AndroidBoard.mk
