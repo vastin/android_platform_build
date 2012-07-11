@@ -129,6 +129,12 @@ TARGET_STRIP_MODULE:=true
 TARGET_DEFAULT_SYSTEM_SHARED_LIBRARIES := libc libstdc++ libm
 
 TARGET_CUSTOM_LD_COMMAND := true
+
+# Enable the Dalvik JIT compiler if not already specified.
+ifeq ($(strip $(WITH_JIT)),)
+    WITH_JIT := true
+endif
+
 define transform-o-to-shared-lib-inner
 $(hide) $(PRIVATE_CXX) \
 	$(PRIVATE_TARGET_GLOBAL_LDFLAGS) \
